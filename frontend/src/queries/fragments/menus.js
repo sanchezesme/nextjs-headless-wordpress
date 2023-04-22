@@ -5,5 +5,5 @@ const MenuFragment = `
 	url
 	path
  }
-`
+`;
 export default MenuFragment;

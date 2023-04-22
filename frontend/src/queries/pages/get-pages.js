@@ -1,5 +1,5 @@
 
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 /**
  * Get pages.

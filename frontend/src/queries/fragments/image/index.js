@@ -3,6 +3,6 @@ fragment ImageFragment on MediaItem {
 	sourceUrl
 	altText
 }
-`
+`;
 
-export default ImageFragment
+export default ImageFragment;

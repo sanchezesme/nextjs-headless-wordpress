@@ -24,8 +24,8 @@ const NewsletterForm = ( { status, message, onValidated }) => {
     const isFormValidated = onValidated({ EMAIL: email });
 
     // On success return true
-    return email && email.indexOf("@") > -1 && isFormValidated;
-  }
+    return email &&   -1 < email.indexOf( '@' ) && isFormValidated;
+  };
 
   /**
    * Handle Input Key Event.
@@ -35,13 +35,13 @@ const NewsletterForm = ( { status, message, onValidated }) => {
   const handleInputKeyEvent = ( event ) => {
     setError(null);
     // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
+    if ( 13 === event.keyCode ) {
       // Cancel the default action, if needed
       event.preventDefault();
       // Trigger the button element with a click
       handleFormSubmit();
     }
-  }
+  };
 
   /**
    * Extract message from string.
@@ -50,16 +50,16 @@ const NewsletterForm = ( { status, message, onValidated }) => {
    * @return {null|*}
    */
   const getMessage = (message) => {
-    if ( !message ) {
+    if ( ! message ) {
       return null;
     }
     const result = message?.split('-') ?? null;
-    if ( "0" !== result?.[0]?.trim() ) {
+    if ( '0' !== result?.[0]?.trim() ) {
       return sanitize(message);
     }
     const formattedMessage = result?.[1]?.trim() ?? null;
     return formattedMessage ? sanitize( formattedMessage ) : null;
-  }
+  };
 
   return (
     <div>
@@ -88,12 +88,12 @@ const NewsletterForm = ( { status, message, onValidated }) => {
             dangerouslySetInnerHTML={{ __html: error || getMessage( message ) }}
           />
         ) : null }
-        {'success' === status && 'error' !== status && !error && (
+        {'success' === status && 'error' !== status && ! error && (
           <div className="text-green-200 font-bold pt-2" dangerouslySetInnerHTML={{ __html: sanitize(message) }} />
         )}
       </div>
     </div>
   );
-}
+};
 
-export default NewsletterForm
+export default NewsletterForm;
